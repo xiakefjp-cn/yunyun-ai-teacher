@@ -40,7 +40,9 @@ class Flow(unittest.TestCase):
             s=create_server(d,port=0); threading.Thread(target=s.serve_forever,daemon=True).start()
             base=f'http://127.0.0.1:{s.server_port}'
             try:
-                html=urllib.request.urlopen(base).read().decode(); import re
+                landing=urllib.request.urlopen(base).read().decode()
+                self.assertIn('体验产品能力',landing)
+                html=urllib.request.urlopen(base+'/studio.html').read().decode(); import re
                 token=re.search("const TOKEN='([^']+)'",html)[1]
                 req=urllib.request.Request(base+'/api/generate',data=json.dumps(dict(request='循环',stage='初中',stats=seed_stats())).encode(),headers={'X-Yunyun-Token':token,'Content-Type':'application/json'})
                 state=json.load(urllib.request.urlopen(req)); self.assertTrue(state['current']['verified'])

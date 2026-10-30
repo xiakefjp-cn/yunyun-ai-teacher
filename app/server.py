@@ -6,7 +6,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 from .core import Engine
 
-WEB=Path(__file__).resolve().parent.parent/'web'/'index.html'
+WEB=Path(__file__).resolve().parent.parent/'web'/'studio.html'
+LANDING=WEB.with_name('index.html')
 
 def create_server(root, host='127.0.0.1', port=8765, mode='web'):
     engine=Engine(root,mode); token=secrets.token_urlsafe(32)
@@ -18,7 +19,8 @@ def create_server(root, host='127.0.0.1', port=8765, mode='web'):
             self.send_header('X-Content-Type-Options','nosniff'); self.send_header('Cache-Control','no-store'); self.end_headers(); self.wfile.write(body)
         def do_GET(self):
             path=urlparse(self.path).path
-            if path=='/': return self.send(WEB.read_text('utf-8').replace('__TOKEN__',token).encode(),ctype='text/html; charset=utf-8')
+            if path in ('/', '/index.html'): return self.send(LANDING.read_bytes(),ctype='text/html; charset=utf-8')
+            if path=='/studio.html': return self.send(WEB.read_text('utf-8').replace('__TOKEN__',token).encode(),ctype='text/html; charset=utf-8')
             if self.headers.get('X-Yunyun-Token')!=token: return self.send({'error':'访问令牌无效'},403)
             if path=='/api/state': return self.send(dict(state=engine.state,files=engine.files(),mode=mode,workspace=str(engine.root)))
             return self.send({'error':'不存在'},404)

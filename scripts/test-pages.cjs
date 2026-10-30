@@ -4,7 +4,10 @@ const {chromium}=require('C:/Users/Fan jun pu/.cache/codex-runtimes/codex-primar
 const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
 try{
  const page=await browser.newPage();const url=process.argv[2]||'http://127.0.0.1:8771';
- await page.goto(url);await page.waitForFunction(()=>document.getElementById('workspace').textContent.includes('浏览器'),{},{timeout:120000});
+ await page.goto(url);
+ await page.getByRole('link',{name:'体验产品能力',exact:false}).first().click();
+ await page.waitForURL('**/studio.html');
+ await page.waitForFunction(()=>document.getElementById('workspace').textContent.includes('浏览器'),{},{timeout:120000});
  fs.mkdirSync('deliverables',{recursive:true});await page.screenshot({path:'deliverables/redesign-empty.png'});
  const result=await page.evaluate(async()=>{
   const stats={total:40,missing:5,infinite_loop:3,boundary:6};
