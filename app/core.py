@@ -119,12 +119,14 @@ class Engine:
             self.state['messages'].append({'role':'user','content':request})
             reports=[]; attempts=[]; bundle=contract
             if live:
-                key=os.environ.get('YUNYUN_API_KEY'); base=os.environ.get('YUNYUN_API_BASE','https://api.deepseek.com/v1')
+                config_path=Path(__file__).resolve().parent.parent/'.api-config.json'
+                config=json.loads(config_path.read_text('utf-8')) if config_path.exists() else {}
+                key=os.environ.get('YUNYUN_API_KEY') or config.get('key'); base=os.environ.get('YUNYUN_API_BASE') or config.get('base','https://api.deepseek.com/v1')
                 if not key: raise ValueError('服务端未配置 YUNYUN_API_KEY；请使用离线演示模式')
                 if not base.startswith('https://'): raise ValueError('API 地址必须使用HTTPS')
                 messages=[{'role':'system','content':SYSTEM}, {'role':'user','content':json.dumps(dict(contract=contract,workspace=self.files(),previous=previous,history=self.state['messages'][-8:],request=request),ensure_ascii=False)}]
                 for turn in range(3):
-                    body=json.dumps(dict(model=os.environ.get('YUNYUN_MODEL','deepseek-chat'),messages=messages,temperature=0.2,max_tokens=7000)).encode()
+                    body=json.dumps(dict(model=os.environ.get('YUNYUN_MODEL') or config.get('model','deepseek-chat'),messages=messages,temperature=0.2,max_tokens=7000)).encode()
                     req=urllib.request.Request(base.rstrip('/')+'/chat/completions',data=body,headers={'Authorization':'Bearer '+key,'Content-Type':'application/json'})
                     with urllib.request.urlopen(req,timeout=90) as response: raw=json.load(response)['choices'][0]['message']['content']
                     raw=re.sub(r'^```(?:json)?\s*|\s*```$','',raw.strip())

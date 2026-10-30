@@ -26,6 +26,8 @@ python -m app.server --workspace demo_workspace
 
 ## 真实模型 API
 
+阿里云百炼可直接运行 `python configure-api.py`，按提示输入地域接口、模型与隐藏密钥；北京默认兼容接口与 `qwen-plus`。配置保存在Git忽略的本地 `.api-config.json`，含明文密钥，不要分享；每次调用重新读取，无需重启。环境变量优先于此文件。
+
 在启动终端配置（不要将密钥写进源码或浏览器）：
 
 ```powershell

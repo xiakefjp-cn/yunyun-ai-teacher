@@ -5,3 +5,7 @@ demo_workspace/.yunyun/
 demo_workspace/published/
 *.zip
 *.mp4
+.api-config.json
+demo_evidence/
+web/check.js
+.playwright-mcp/
