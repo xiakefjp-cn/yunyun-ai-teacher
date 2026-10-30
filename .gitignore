@@ -1,0 +1,7 @@
+__pycache__/
+.env
+.yunyun/
+demo_workspace/.yunyun/
+demo_workspace/published/
+*.zip
+*.mp4
