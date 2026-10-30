@@ -1,5 +1,9 @@
 # 耘耘AI助教
 
+[公网演示](https://xiakefjp-cn.github.io/yunyun-ai-teacher/) · [视频与源码包](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/tag/v0.1.0) · [最终交付说明](docs/最终交付.md)
+
+公网演示使用离线模板与浏览器Python真实验证；真实qwen-plus调用请运行本机版本。首次访问需下载Python运行环境。
+
 为初中信息科技教师实现的可验证备课助手。Python 3.11+，仅用标准库，无需安装依赖；Windows 桌面与 Web 共享 `app/core.py`。
 
 ## 一键启动
