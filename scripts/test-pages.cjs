@@ -5,6 +5,7 @@ const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chr
 try{
  const page=await browser.newPage();const url=process.argv[2]||'http://127.0.0.1:8771';
  await page.goto(url);await page.waitForFunction(()=>document.getElementById('workspace').textContent.includes('浏览器'),{},{timeout:120000});
+ fs.mkdirSync('deliverables',{recursive:true});await page.screenshot({path:'deliverables/redesign-empty.png'});
  const result=await page.evaluate(async()=>{
   const stats={total:40,missing:5,infinite_loop:3,boundary:6};
   let s=await(await api('generate',{request:'循环结构',stage:'初中',stats,live:false})).json();
@@ -27,6 +28,6 @@ try{
  result.restored=await page.locator('#history button').count()>=3;
  if(!result.restored)throw Error('Resume failed');
  fs.mkdirSync('deliverables',{recursive:true});fs.writeFileSync('deliverables/pages-acceptance.json',JSON.stringify({url,...result},null,2));
- await page.screenshot({path:'deliverables/public-demo.png',fullPage:true});console.log(JSON.stringify(result));
+ await page.screenshot({path:'deliverables/public-demo.png',fullPage:true});await page.screenshot({path:'deliverables/redesign-result.png'});console.log(JSON.stringify(result));
 }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exit(1)});
