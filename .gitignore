@@ -9,3 +9,5 @@ demo_workspace/published/
 demo_evidence/
 web/check.js
 .playwright-mcp/
+deliverables/
+site_out/
