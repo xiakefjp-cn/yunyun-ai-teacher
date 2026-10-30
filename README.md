@@ -12,6 +12,23 @@
 
 ## 一键启动
 
+**推荐本机 Docker 部署**：先打开 Docker Desktop（Linux containers），双击 `start-docker.cmd`，或执行：
+
+```powershell
+docker compose up -d --build --wait --wait-timeout 180
+```
+
+打开 http://127.0.0.1:8765 ，从作品集首页点击“体验产品能力”进入本机工作台。本机无需安装Python。第一次需联网下载镜像，后续可用 `docker compose up -d --wait` 快速启动。
+
+- 班情与种子文件首次自动复制到 `teacher_workspace/`，已有文件不覆盖。
+- 教案写到 `teacher_workspace/published/`，会话、修订与备份在 `teacher_workspace/.yunyun/`，均真实保存在本机。
+- 根目录 `.env` 配置百炼密钥与模型；没有key仍可选择离线模式。修改配置后运行 `docker compose up -d --force-recreate --wait`。
+- 停止：双击 `stop-docker.cmd` 或 `docker compose stop`；再次启动会恢复会话。`docker compose down` 也不会删除本机工作区。
+- 状态：`docker compose ps`；日志：`docker compose logs --tail 50`。端口冲突时在 `.env` 增加 `YUNYUN_PORT=8876`，然后打开相应端口。
+- Linux手动部署时，绑定目录须允许容器UID 10001写入；Windows Docker Desktop直接使用项目下的目录。
+
+以下保留无需Docker的Python启动方式：
+
 在本目录双击 `start-web.cmd`，或运行：
 
 ```powershell
@@ -68,8 +85,8 @@ python scripts/demo.py
 
 ## 部署与已知边界
 
-Dockerfile 可部署支持长期运行 HTTP 的容器主机：`docker build -t yunyun .` 后 `docker run --rm -p 8765:8765 yunyun`。需要持久化时挂载独立工作区，并在平台上配置 HTTPS、认证和访问范围。
+推荐使用上文Docker Compose启动方式，已包含真实目录绑定、健康检查与资源限制；容器镜像使用Python 3.12。部署到远程主机时另行配置HTTPS、认证和访问范围。详见 [Docker本机部署](docs/Docker本机部署.md)。
 
 本版本为**单教师单工作区演示**，所有浏览器访问共享同一会话。不能把带教师资料的实例直接暴露到公开网络。上线前应加租户隔离、容器级运行沙箱、鉴权、配额和审计保护。当前运行器禁用 import、属性、定义函数、乘法等，故不会支持通用 Python；内存边界建立失败会拒绝执行。配套用例大多与答案同源，无法证明教学内容正确；教师仍须复核，下一迭代加入教师维护的独立题库测试与课程知识点白名单。
 
-尚未交付：公网托管地址、远程 Git 仓库地址、≤5分钟实际录屏。真实 API 调用证据位于本机 demo_evidence/live/。本地源码、启动方式、设计文档与自动化证据均随项目交付。详见 `docs/交付与验收.md`。
+公网演示、公开Git仓库和新版实际录屏已交付。Docker Compose提供本机持久化部署；完整原生Tk窗口验收仍按用户选择暂缓。真实API证据位于本机 demo_evidence/live/。详见 `docs/最终交付.md`。

@@ -1,0 +1,29 @@
+name: yunyun-ai-teacher
+services:
+  teacher:
+    build: .
+    image: yunyun-ai-teacher:local
+    ports:
+      - "127.0.0.1:${YUNYUN_PORT:-8765}:8765"
+    environment:
+      YUNYUN_API_KEY: ${YUNYUN_API_KEY:-}
+      YUNYUN_API_BASE: ${YUNYUN_API_BASE:-https://dashscope.aliyuncs.com/compatible-mode/v1}
+      YUNYUN_MODEL: ${YUNYUN_MODEL:-qwen-plus}
+    volumes:
+      - ./teacher_workspace:/workspace
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    cpus: 1.0
+    pids_limit: 64
+    init: true
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/health', timeout=3).read()"]
+      interval: 10s
+      timeout: 5s
+      start_period: 10s
+      retries: 6

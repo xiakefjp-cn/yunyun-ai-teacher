@@ -1,0 +1,13 @@
+*
+!Dockerfile
+!app/
+!app/*.py
+!web/
+!web/*.html
+!demo_workspace/
+!demo_workspace/*.md
+!demo_workspace/*.py
+!demo_workspace/*.json
+**/__pycache__
+**/.yunyun
+**/published
