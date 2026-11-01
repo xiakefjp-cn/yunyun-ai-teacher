@@ -11,6 +11,8 @@
 |在自己电脑上启动|[Docker本机部署](Docker本机部署.md)|
 |看设计理由和教育考虑|[一页设计与教育判断](设计与教育判断.md)|
 |了解从读题到实现的过程|[完整思路与方法](完整思路与方法.md)|
+|看题目来源和这次改进|[出题方式与改进记录](出题方式与改进记录.md)|
+|查看各版本变化|[版本更新记录](../CHANGELOG.md)|
 |看怎样给AI提要求|[指令与修改记录](prompts.md)|
 |看AI具体写错了什么|[AI修正案例](AI修正案例.md)|
 |看已经检查过哪些功能|[交付与验收](交付与验收.md)|
@@ -32,4 +34,4 @@ git pull origin master
 docker compose up -d --build --wait
 ```
 
-先打开Docker Desktop。更新后仍从 http://127.0.0.1:8765 进入；项目里的teacher_workspace保存教案和记录，更新时不要删除。用源码ZIP的用户，请从[最新版下载页](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/tag/v0.4.0)获取文件，保留自己的.env和teacher_workspace。
+先打开Docker Desktop。更新后仍从 http://127.0.0.1:8765 进入；项目里的teacher_workspace保存教案和记录，更新时不要删除。用源码ZIP的用户，请从[最新版下载页](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/tag/v0.5.0)获取文件，保留自己的.env和teacher_workspace。

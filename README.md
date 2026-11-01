@@ -2,7 +2,7 @@
 
 现在可以选择语文、数学和信息科技。老师填写课题、学段和时长，也可以读取已有Word教案作为参考，整理出教案、两个课堂示范和三种难度的练习。机器能检查的内容因学科不同，最后都要老师逐项确认。
 
-[打开网页体验](https://xiakefjp-cn.github.io/yunyun-ai-teacher/) · [看视频、下载源码](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/tag/v0.4.0) · [给老师的交付清单](docs/最终交付.md)
+[打开网页体验](https://xiakefjp-cn.github.io/yunyun-ai-teacher/) · [看视频、下载源码](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/tag/v0.5.0) · [给老师的交付清单](docs/最终交付.md)
 
 ## 作业提交
 
@@ -10,13 +10,21 @@
 
 2. **桌面端和本机启动**：下载源码后，安装Python 3.11或更新版本（含Tk），双击 [start-desktop.cmd](start-desktop.cmd)，输入教案目录即可启动。也可先打开Docker Desktop，再双击 [start-docker.cmd](start-docker.cmd)。[详细步骤](docs/Docker本机部署.md)
 
-3. **演示视频**：[观看或下载完整演示（约1分36秒）](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/download/v0.4.0/yunyun-demo.webm)。一段视频看完语文、数学、信息科技体验，包含编程课真实模型生成、代码运行、故意失败、老师审核和本机保存。语文数学部分用离线示例展示操作。
+3. **演示视频**：[观看或下载完整演示（约1分47秒）](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/download/v0.5.0/yunyun-demo.webm)。一段视频看完语文、数学、信息科技体验，包含编程课真实模型生成、代码运行、故意失败、老师审核和本机保存。语文数学部分用离线示例展示操作。
 
-4. **源码仓库**：[公开GitHub仓库](https://github.com/xiakefjp-cn/yunyun-ai-teacher)，保留完整提交历史。[给AI的要求与修改记录](docs/prompts.md) · [完整实现思路](docs/完整思路与方法.md) · [源码下载](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/tag/v0.4.0)
+4. **源码仓库**：[公开GitHub仓库](https://github.com/xiakefjp-cn/yunyun-ai-teacher)，保留完整提交历史。[给AI的要求与修改记录](docs/prompts.md) · [完整实现思路](docs/完整思路与方法.md) · [源码下载](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/tag/v0.5.0)
 
 5. **一页《设计与教育判断》**：[打开文档](docs/设计与教育判断.md)。回答如何拦住错误、为什么砍掉部分功能、怎样使用AI并修正错误、怎样避免学生直接抄答案，以及进真实班级前先做什么。
 
 附：[参考教案后的改编稿](docs/提交附件/循环结构教案_待老师审核.md) · [这次实际测试结果](docs/提交附件/教案测试记录.md)。教案仍待任课老师审核，测试资料不含原文中的学生姓名。 新版补充：[三科使用说明](docs/多学科使用说明.md) · [jqx示例](docs/提交附件/jqx备课示例_待审核.md) · [数学示例](docs/提交附件/乘法备课示例_待审核.md)。
+
+## 题目从哪里来
+
+现在可以选择：大模型根据需求出题并给解答、直接使用题库、题库优先由模型补齐。纯模型模式只发送空白输出格式，不再附上旧题答案；每道题显示实际来源，修改后也会记录。
+
+内置题库只有15道项目示例，未经过任课教师审校；可以导入自己的JSON题库，没有连接外部商业题库。编程题同时提供解题思路与代码。模型不保证原创，建议用时也没有经过课堂验证。
+
+[出题方式与改进记录](docs/出题方式与改进记录.md) · [各版本更新记录](CHANGELOG.md) · [题库导入示例](docs/题库导入示例.json)
 
 ## 三种学科，分别检查什么
 
@@ -84,7 +92,7 @@ Docker 用户修改配置后运行：
 docker compose up -d --force-recreate --wait
 ```
 
-然后在工作台选择“真实模型 API”。调用会使用你账号的额度；没有密钥或调用失败时，页面会提示错误。密钥只放在本机，不要发给别人，也不要上传 GitHub。
+然后在工作台选择“真实模型 API”，再选择“大模型根据需求出题并解答”。调用会使用你账号的额度；没有密钥或调用失败时，页面会提示错误。密钥只放在本机，不要发给别人，也不要上传 GitHub。
 
 不用 Docker 时，还可以运行 `python configure-api.py` 按提示填写。它会把配置存入本机 `.api-config.json`；该文件同样不能分享。如果同时设置了多处配置，程序先读环境变量，再读 `.env`，最后读这个文件。
 
@@ -106,3 +114,5 @@ docker compose up -d --force-recreate --wait
 - [桌面测试记录](docs/桌面验收.md)和[真实模型测试记录](docs/真实API验收.md)。
 
 开发者可以运行 `python -m unittest discover -s tests -v` 检查主要功能。`python scripts/demo.py` 会在单独的测试文件夹重现生成、失败、恢复和保存，不会调用付费模型。
+
+题目来源与本轮改进：[说明](docs/出题方式与改进记录.md)。历次版本变化见[更新记录](CHANGELOG.md)。

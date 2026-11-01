@@ -1,0 +1,66 @@
+{
+  "steps": [
+    {
+      "seconds": 1,
+      "title": "1. 多学科产品首页，进入体验"
+    },
+    {
+      "seconds": 5,
+      "title": "2. 语文jqx：示范、分层活动、材料填写检查，读音书写由老师判断"
+    },
+    {
+      "seconds": 8,
+      "title": "3. 语文参考答案与教师观察点，可以直接修改文字"
+    },
+    {
+      "seconds": 12,
+      "title": "4. 数学乘法：题意、答案、评分点和可核对算式"
+    },
+    {
+      "seconds": 15,
+      "title": "5. 故意把4乘3的期望写成13，程序算出12并标出失败"
+    },
+    {
+      "seconds": 17,
+      "title": "6. 存在计算错误时，教案下载被阻止"
+    },
+    {
+      "seconds": 20,
+      "title": "7. 老师提出循环课需求，选择真实模型API"
+    },
+    {
+      "seconds": 84,
+      "title": "8. 真实模型根据需求出题，查看代码实际运行与解题思路"
+    },
+    {
+      "seconds": 86,
+      "title": "查看逐题来源：模型生成、解题思路、建议用时与参考代码"
+    },
+    {
+      "seconds": 90,
+      "title": "9. 故意写死循环，实际执行超限"
+    },
+    {
+      "seconds": 92,
+      "title": "10. 代码错误时，同样禁止导出"
+    },
+    {
+      "seconds": 98,
+      "title": "11. 恢复通过版本，老师确认6项材料，保存前查看文件修改"
+    },
+    {
+      "seconds": 104,
+      "title": "12. 教案真实写入本机目录，并下载完整教案包"
+    }
+  ],
+  "durationSeconds": 107,
+  "language": "completeness only",
+  "mathFailureBlocked": true,
+  "loopFailureBlocked": true,
+  "localFiles": true,
+  "source": "language/math: explicit offline samples; computing: real model API",
+  "question_mode": "model",
+  "coding_cases": 15,
+  "demo_confirmed_items": 6,
+  "note": "录制中的确认是演示操作，不代表真实任课教师已审校。"
+}

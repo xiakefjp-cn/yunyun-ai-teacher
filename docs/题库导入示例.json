@@ -1,0 +1,52 @@
+{
+  "questions": [
+    {
+      "id": "teacher-demo-basic",
+      "subject": "信息科技",
+      "stages": [
+        "小学",
+        "初中",
+        "大学"
+      ],
+      "topic": "循环结构",
+      "tags": [
+        "循环",
+        "for",
+        "while"
+      ],
+      "level": "基础",
+      "item": {
+        "id": "basic",
+        "title": "基础：重复课堂口令",
+        "kind": "exercise",
+        "code": "n = int(input())\nfor i in range(n):\n    print(\"继续\")\n",
+        "tests": [
+          {
+            "stdin": "0",
+            "expected": ""
+          },
+          {
+            "stdin": "1",
+            "expected": "继续"
+          },
+          {
+            "stdin": "3",
+            "expected": "继续\n继续\n继续"
+          }
+        ],
+        "level": "基础",
+        "prompt": "输入n（0到20），按行输出n次“继续”。先预测n为0和3时的输出。",
+        "rubric": [
+          "正确区间4分",
+          "偶数判断或步长4分",
+          "边界与输出2分"
+        ],
+        "estimated_minutes": 4,
+        "participation": "必做",
+        "solution": "用range(n)重复n次，每次只输出一行口令；n为0时不进入循环。"
+      },
+      "source_label": "教师自编题示例，请替换为你的实际来源",
+      "catalog": "built_in"
+    }
+  ]
+}

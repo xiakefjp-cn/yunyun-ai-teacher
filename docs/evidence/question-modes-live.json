@@ -1,0 +1,190 @@
+[
+  {
+    "subject": "信息科技",
+    "mode": "model",
+    "verified": true,
+    "attempts": 1,
+    "checks": 15,
+    "teacher_approved": false,
+    "questions": [
+      {
+        "id": "basic",
+        "title": "自习室翻书页码",
+        "solution_present": true,
+        "estimated_minutes": 6,
+        "origin": {
+          "kind": "model_generated",
+          "source_label": "大模型根据本轮需求返回；不保证独创性",
+          "exact_bank_match": null,
+          "teacher_reviewed": false
+        }
+      },
+      {
+        "id": "advanced",
+        "title": "食堂打饭排队补全",
+        "solution_present": true,
+        "estimated_minutes": 8,
+        "origin": {
+          "kind": "model_generated",
+          "source_label": "大模型根据本轮需求返回；不保证独创性",
+          "exact_bank_match": null,
+          "teacher_reviewed": false
+        }
+      },
+      {
+        "id": "challenge",
+        "title": "图书角还书倒计时",
+        "solution_present": true,
+        "estimated_minutes": 10,
+        "origin": {
+          "kind": "model_generated",
+          "source_label": "大模型根据本轮需求返回；不保证独创性",
+          "exact_bank_match": null,
+          "teacher_reviewed": false
+        }
+      }
+    ],
+    "independent_format_check": true,
+    "teacher_review_note": "题干、解题思路与代码格式不一致由人工发现；反馈模型后追加独立输出检查。仍需任课老师审核。"
+  },
+  {
+    "subject": "信息科技",
+    "mode": "mixed",
+    "verified": true,
+    "attempts": 1,
+    "checks": 15,
+    "teacher_approved": false,
+    "questions": [
+      {
+        "id": "basic",
+        "title": "基础：输出1至n的偶数",
+        "solution_present": true,
+        "estimated_minutes": 4,
+        "origin": {
+          "kind": "question_bank",
+          "bank_id": "builtin-1-basic",
+          "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+          "catalog": "built_in",
+          "fingerprint": "d4e518b9b45bd68756bda826f8ea46b974122231279606e9e76dd1223e44b31d",
+          "teacher_reviewed": false
+        }
+      },
+      {
+        "id": "advanced",
+        "title": "进阶：修复图书馆借阅统计程序（改错）",
+        "solution_present": true,
+        "estimated_minutes": 7,
+        "origin": {
+          "kind": "model_generated",
+          "source_label": "大模型根据本轮需求返回；不保证独创性",
+          "exact_bank_match": null,
+          "teacher_reviewed": false
+        }
+      },
+      {
+        "id": "challenge",
+        "title": "挑战：晨跑中断后重新计数（双循环）",
+        "solution_present": true,
+        "estimated_minutes": 7,
+        "origin": {
+          "kind": "model_generated",
+          "source_label": "大模型根据本轮需求返回；不保证独创性",
+          "exact_bank_match": null,
+          "teacher_reviewed": false
+        }
+      }
+    ]
+  },
+  {
+    "subject": "数学",
+    "mode": "model",
+    "verified": true,
+    "attempts": 1,
+    "checks": 12,
+    "teacher_approved": false,
+    "questions": [
+      {
+        "id": "basic",
+        "title": "音乐课排队：每队6人，排成3队",
+        "solution_present": true,
+        "estimated_minutes": 6,
+        "origin": {
+          "kind": "model_generated",
+          "source_label": "大模型根据本轮需求返回；不保证独创性",
+          "exact_bank_match": null,
+          "teacher_reviewed": false
+        }
+      },
+      {
+        "id": "advanced",
+        "title": "手工课分材料：每组1盒彩纸，共8组；每盒有5张",
+        "solution_present": true,
+        "estimated_minutes": 10,
+        "origin": {
+          "kind": "model_generated",
+          "source_label": "大模型根据本轮需求返回；不保证独创性",
+          "exact_bank_match": null,
+          "teacher_reviewed": false
+        }
+      },
+      {
+        "id": "challenge",
+        "title": "教室布置彩带：每扇门挂3条，每条长2米；共4扇门",
+        "solution_present": true,
+        "estimated_minutes": 12,
+        "origin": {
+          "kind": "model_generated",
+          "source_label": "大模型根据本轮需求返回；不保证独创性",
+          "exact_bank_match": null,
+          "teacher_reviewed": false
+        }
+      }
+    ]
+  },
+  {
+    "subject": "语文",
+    "mode": "model",
+    "verified": true,
+    "attempts": 1,
+    "checks": 10,
+    "teacher_approved": false,
+    "questions": [
+      {
+        "id": "basic",
+        "title": "找朋友：圈出j q x",
+        "solution_present": true,
+        "estimated_minutes": 5,
+        "origin": {
+          "kind": "model_generated",
+          "source_label": "大模型根据本轮需求返回；不保证独创性",
+          "exact_bank_match": null,
+          "teacher_reviewed": false
+        }
+      },
+      {
+        "id": "advanced",
+        "title": "拼一拼，连一连",
+        "solution_present": true,
+        "estimated_minutes": 8,
+        "origin": {
+          "kind": "model_generated",
+          "source_label": "大模型根据本轮需求返回；不保证独创性",
+          "exact_bank_match": null,
+          "teacher_reviewed": false
+        }
+      },
+      {
+        "id": "challenge",
+        "title": "三拼小侦探：补全缺失的‘i’桥",
+        "solution_present": true,
+        "estimated_minutes": 7,
+        "origin": {
+          "kind": "model_generated",
+          "source_label": "大模型根据本轮需求返回；不保证独创性",
+          "exact_bank_match": null,
+          "teacher_reviewed": false
+        }
+      }
+    ]
+  }
+]
