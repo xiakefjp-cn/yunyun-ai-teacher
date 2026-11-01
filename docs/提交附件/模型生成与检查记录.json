@@ -1,0 +1,387 @@
+{
+  "bundle": {
+    "title": "循环结构备课包",
+    "stage": "初中",
+    "stats": {
+      "total": 40,
+      "missing": 5,
+      "infinite_loop": 3,
+      "boundary": 6
+    },
+    "items": [
+      {
+        "id": "lesson",
+        "kind": "lesson",
+        "title": "循环结构：让重复有边界",
+        "objectives": [
+          "追踪循环变量变化，判断终止条件",
+          "用 for 和 while 解决计数与累加问题",
+          "通过零次、一次、多次循环用例解释程序结果"
+        ],
+        "prerequisites": [
+          "变量与输入输出",
+          "条件语句"
+        ],
+        "segments": [
+          {
+            "title": "前置诊断与补齐",
+            "minutes": 7,
+            "activity": "5人未交：先做2道条件语句口头诊断（如输入a,b，输出较大值；输入x，若x>0输出'正'否则输出'非正'），不推定为不会；同伴讲解输入与判断。"
+          },
+          {
+            "title": "示范与追踪",
+            "minutes": 12,
+            "activity": "扫地机器人引入：'每次前进10步，重复10次，共走多少步？'——强调累计100步，非总共10步；手写变量追踪表（n,i,position或s,count）后运行；六边形改错：给出错误代码（右转60度在for外），让学生指出为何n=6时只转一次；纸上流程图：画菱形判断框+两条分支线（是→循环体→回菱形，否→退出），人工审核文字描述与图形是否对应。"
+          },
+          {
+            "title": "分层练习",
+            "minutes": 15,
+            "activity": "基础：检查for循环内是否完整包含'移动10步'和'右转60度'两行；进阶：检查while中i是否初始化、条件是否含<=、更新是否在循环体内；挑战：检查循环条件是否为s<target、更新顺序是否先i+=1再s+=10、是否处理n=0。逐个检查边界用例输出。"
+          },
+          {
+            "title": "退出条与反馈",
+            "minutes": 6,
+            "activity": "写出 while 三要素（初始化、条件、更新）；解释 n=0 时所有程序输出为空或0的原因；正方形题澄清：若比'执行次数'，A=10、B=5、C=3；若比'不同位置/方向的图形数量'，须明确定义重叠即相同、角度差≥30°算不同，原文B不能直接判对。"
+          }
+        ],
+        "teacher_review": [
+          "课程标准与课堂节奏仍由老师判断",
+          "测试通过只说明已测输入一致；人工核对参考答案、测试期望和难度",
+          "正方形题若比较调用次数是10/5/3；若比较不同图形须先明确重叠与位置方向标准，原文不能直接判B",
+          "10次移动10步累计100步，非总共10步",
+          "所有几何活动仅输出指令文本，未执行Scratch或图形库验证"
+        ],
+        "stage": "初中"
+      },
+      {
+        "id": "example_for",
+        "title": "演示1：机器人重复前进",
+        "kind": "example",
+        "code": "n = int(input())\nposition = 0\nfor i in range(n):\n    position += 10\n    print(position)\n",
+        "tests": [
+          {
+            "stdin": "0",
+            "expected": ""
+          },
+          {
+            "stdin": "1",
+            "expected": "10"
+          },
+          {
+            "stdin": "3",
+            "expected": "10\n20\n30"
+          }
+        ],
+        "explanation": "range(n)生成0至n-1，共n次；每次position增加10并打印，体现累计位置。n=0时range(0)为空，无循环。"
+      },
+      {
+        "id": "example_while",
+        "title": "演示2：到达目标距离",
+        "kind": "example",
+        "code": "target = int(input())\nposition = 0\nwhile position < target:\n    position += 10\nprint(position)\n",
+        "tests": [
+          {
+            "stdin": "0",
+            "expected": "0"
+          },
+          {
+            "stdin": "25",
+            "expected": "30"
+          },
+          {
+            "stdin": "10",
+            "expected": "10"
+          },
+          {
+            "stdin": "1",
+            "expected": "10"
+          }
+        ],
+        "explanation": "初始化position=0；条件position<target保证未达目标才继续；每次+10更新位置；n=0时条件假，直接输出0。"
+      },
+      {
+        "id": "basic",
+        "title": "基础：六边形指令序列",
+        "kind": "exercise",
+        "code": "n = int(input())\nfor i in range(n):\n    print('移动10步')\n    print('右转60度')\n",
+        "tests": [
+          {
+            "stdin": "0",
+            "expected": ""
+          },
+          {
+            "stdin": "1",
+            "expected": "移动10步\n右转60度"
+          },
+          {
+            "stdin": "6",
+            "expected": "移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度"
+          }
+        ],
+        "level": "基础",
+        "prompt": "输入非负整数n（0~100），按行输出n次'移动10步'和'右转60度'（共2n行）。n=6对应六边形指令序列。",
+        "rubric": [
+          "循环范围正确4分",
+          "两行指令均在循环内4分",
+          "n=0无输出2分"
+        ]
+      },
+      {
+        "id": "advanced",
+        "title": "进阶：逐桌清扫计数",
+        "kind": "exercise",
+        "code": "n = int(input())\ncount = 0\nwhile count < n:\n    count += 1\nprint(count)\n",
+        "tests": [
+          {
+            "stdin": "0",
+            "expected": "0"
+          },
+          {
+            "stdin": "3",
+            "expected": "3"
+          },
+          {
+            "stdin": "1",
+            "expected": "1"
+          },
+          {
+            "stdin": "100",
+            "expected": "100"
+          }
+        ],
+        "level": "进阶",
+        "prompt": "输入要扫的桌子数n（0~100），用while模拟逐桌清扫过程，只输出最终扫过的桌子总数。",
+        "rubric": [
+          "初始化2分",
+          "终止条件与更新4分",
+          "避免死循环2分",
+          "n=0边界2分"
+        ]
+      },
+      {
+        "id": "challenge",
+        "title": "挑战：首次达到目标次数",
+        "kind": "exercise",
+        "code": "target = int(input())\ncount = 0\nposition = 0\nwhile position < target:\n    count += 1\n    position += 10\nprint(count)\n",
+        "tests": [
+          {
+            "stdin": "0",
+            "expected": "0"
+          },
+          {
+            "stdin": "25",
+            "expected": "3"
+          },
+          {
+            "stdin": "10",
+            "expected": "1"
+          },
+          {
+            "stdin": "1",
+            "expected": "1"
+          },
+          {
+            "stdin": "30",
+            "expected": "3"
+          }
+        ],
+        "level": "挑战",
+        "prompt": "输入目标距离（0~100），每次移动10步，求首次达到或超过目标所需的最少次数。只输出次数。",
+        "rubric": [
+          "循环条件3分",
+          "更新顺序3分",
+          "最小性逻辑2分",
+          "n=0零边界2分"
+        ]
+      }
+    ],
+    "warnings": [
+      {
+        "category": "终止条件",
+        "evidence": "上次3人出现死循环",
+        "trigger": "只写条件，漏写循环变量更新",
+        "intervention": "示范删去 count += 1；先预测，再观察超限；三色标注初始化、条件、更新。"
+      },
+      {
+        "category": "边界取值",
+        "evidence": "上次6人出现边界错误",
+        "trigger": "把 range 右端当作包含",
+        "intervention": "先手算 n=0、1、2，再运行比较。"
+      },
+      {
+        "category": "前置知识",
+        "evidence": "5人未提交（原因未知）",
+        "trigger": "前置知识掌握程度缺乏证据",
+        "intervention": "匿名退出条和课堂诊断；不把缺交等同能力不足。"
+      }
+    ]
+  },
+  "reports": [
+    {
+      "id": "example_for",
+      "title": "演示1：机器人重复前进",
+      "cases": [
+        {
+          "stdin": "0",
+          "expected": "",
+          "stdout": "",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "1",
+          "expected": "10",
+          "stdout": "10\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "3",
+          "expected": "10\n20\n30",
+          "stdout": "10\n20\n30\n",
+          "error": null,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "example_while",
+      "title": "演示2：到达目标距离",
+      "cases": [
+        {
+          "stdin": "0",
+          "expected": "0",
+          "stdout": "0\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "25",
+          "expected": "30",
+          "stdout": "30\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "10",
+          "expected": "10",
+          "stdout": "10\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "1",
+          "expected": "10",
+          "stdout": "10\n",
+          "error": null,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "basic",
+      "title": "基础：六边形指令序列",
+      "cases": [
+        {
+          "stdin": "0",
+          "expected": "",
+          "stdout": "",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "1",
+          "expected": "移动10步\n右转60度",
+          "stdout": "移动10步\n右转60度\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "6",
+          "expected": "移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度",
+          "stdout": "移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n",
+          "error": null,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "title": "进阶：逐桌清扫计数",
+      "cases": [
+        {
+          "stdin": "0",
+          "expected": "0",
+          "stdout": "0\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "3",
+          "expected": "3",
+          "stdout": "3\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "1",
+          "expected": "1",
+          "stdout": "1\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "100",
+          "expected": "100",
+          "stdout": "100\n",
+          "error": null,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "challenge",
+      "title": "挑战：首次达到目标次数",
+      "cases": [
+        {
+          "stdin": "0",
+          "expected": "0",
+          "stdout": "0\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "25",
+          "expected": "3",
+          "stdout": "3\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "10",
+          "expected": "1",
+          "stdout": "1\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "1",
+          "expected": "1",
+          "stdout": "1\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "30",
+          "expected": "3",
+          "stdout": "3\n",
+          "error": null,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "verified": true,
+  "source": "api",
+  "note": "模型第二轮原稿，讲解文字中的问题见测试记录；供对照，不是教师已确认版本。"
+}

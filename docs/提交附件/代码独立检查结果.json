@@ -1,0 +1,151 @@
+{
+  "reports": [
+    {
+      "id": "example_for",
+      "cases": [
+        {
+          "stdin": "0",
+          "expected": "",
+          "stdout": "",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "1",
+          "expected": "10",
+          "stdout": "10\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "3",
+          "expected": "10\n20\n30",
+          "stdout": "10\n20\n30\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "10",
+          "expected": "10\n20\n30\n40\n50\n60\n70\n80\n90\n100",
+          "stdout": "10\n20\n30\n40\n50\n60\n70\n80\n90\n100\n",
+          "error": null,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "example_while",
+      "cases": [
+        {
+          "stdin": "0",
+          "expected": "0",
+          "stdout": "0\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "1",
+          "expected": "10",
+          "stdout": "10\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "25",
+          "expected": "30",
+          "stdout": "30\n",
+          "error": null,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "basic",
+      "cases": [
+        {
+          "stdin": "0",
+          "expected": "",
+          "stdout": "",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "1",
+          "expected": "移动10步\n右转60度",
+          "stdout": "移动10步\n右转60度\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "6",
+          "expected": "移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度",
+          "stdout": "移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n移动10步\n右转60度\n",
+          "error": null,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "cases": [
+        {
+          "stdin": "0",
+          "expected": "0",
+          "stdout": "0\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "1",
+          "expected": "1",
+          "stdout": "1\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "3",
+          "expected": "3",
+          "stdout": "3\n",
+          "error": null,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "challenge",
+      "cases": [
+        {
+          "stdin": "0",
+          "expected": "0",
+          "stdout": "0\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "1",
+          "expected": "1",
+          "stdout": "1\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "25",
+          "expected": "3",
+          "stdout": "3\n",
+          "error": null,
+          "passed": true
+        },
+        {
+          "stdin": "30",
+          "expected": "3",
+          "stdout": "3\n",
+          "error": null,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "cases": 17,
+  "scope": "Independent Python stdin/stdout checks; no Scratch or graphics execution."
+}

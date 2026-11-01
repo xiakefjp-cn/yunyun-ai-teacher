@@ -4,6 +4,20 @@
 
 [打开网页体验](https://xiakefjp-cn.github.io/yunyun-ai-teacher/) · [看视频、下载源码](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/tag/v0.3.0) · [给老师的交付清单](docs/最终交付.md)
 
+## 作业提交
+
+1. **可访问的网页**：[打开耘耘AI助教](https://xiakefjp-cn.github.io/yunyun-ai-teacher/)。点击“体验产品能力”进入备课页面。公开网页用模板生成内容，代码会真实运行；本机版可调用真实模型。
+
+2. **桌面端和本机启动**：下载源码后，安装Python 3.11或更新版本（含Tk），双击 [start-desktop.cmd](start-desktop.cmd)，输入教案目录即可启动。也可先打开Docker Desktop，再双击 [start-docker.cmd](start-docker.cmd)。[详细步骤](docs/Docker本机部署.md)
+
+3. **演示视频**：[观看或下载84秒视频](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/download/v0.3.0/yunyun-demo.webm)。内容包括提出备课需求、真实模型生成、代码运行、故意失败、阻止下载、恢复、老师审核、写入本机和易错点提醒。
+
+4. **源码仓库**：[公开GitHub仓库](https://github.com/xiakefjp-cn/yunyun-ai-teacher)，保留完整提交历史。[给AI的要求与修改记录](docs/prompts.md) · [完整实现思路](docs/完整思路与方法.md) · [源码下载](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/tag/v0.3.0)
+
+5. **一页《设计与教育判断》**：[打开文档](docs/设计与教育判断.md)。回答如何拦住错误、为什么砍掉部分功能、怎样使用AI并修正错误、怎样避免学生直接抄答案，以及进真实班级前先做什么。
+
+附：[参考教案后的改编稿](docs/提交附件/循环结构教案_待老师审核.md) · [这次实际测试结果](docs/提交附件/教案测试记录.md)。教案仍待任课老师审核，测试资料不含原文中的学生姓名。
+
 ## 先选一种使用方式
 
 |你想做什么|怎么打开|
