@@ -1,6 +1,6 @@
 # 耘耘AI助教
 
-[公网演示](https://xiakefjp-cn.github.io/yunyun-ai-teacher/) · [视频与源码包](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/tag/v0.2.0) · [最终交付说明](docs/最终交付.md)
+[公网演示](https://xiakefjp-cn.github.io/yunyun-ai-teacher/) · [视频与源码包](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/tag/v0.3.0) · [最终交付说明](docs/最终交付.md)
 
 公网演示使用离线模板与浏览器Python真实验证；真实qwen-plus调用请运行本机版本。首次访问需下载Python运行环境。
 
@@ -8,7 +8,7 @@
 
 ## 作品集与体验入口
 
-首页展示项目能力和流程，点击“体验产品能力”进入 `studio.html` 备课工作台。公网版和本机版使用同样的两页入口。新版演示视频已按“首页 → 工作台 → 验证 → 回退 → 导出”重录，见Release v0.2.0。
+首页展示项目能力和流程，点击“体验产品能力”进入 `studio.html` 备课工作台。公网版和本机版使用同样的两页入口。新版演示视频已按“首页 → 工作台 → 验证 → 回退 → 导出”重录，见Release v0.3.0。
 
 ## 一键启动
 
@@ -89,4 +89,4 @@ python scripts/demo.py
 
 本版本为**单教师单工作区演示**，所有浏览器访问共享同一会话。不能把带教师资料的实例直接暴露到公开网络。上线前应加租户隔离、容器级运行沙箱、鉴权、配额和审计保护。当前运行器禁用 import、属性、定义函数、乘法等，故不会支持通用 Python；内存边界建立失败会拒绝执行。配套用例大多与答案同源，无法证明教学内容正确；教师仍须复核，下一迭代加入教师维护的独立题库测试与课程知识点白名单。
 
-公网演示、公开Git仓库和新版实际录屏已交付。Docker Compose提供本机持久化部署；完整原生Tk窗口验收仍按用户选择暂缓。真实API证据位于本机 demo_evidence/live/。详见 `docs/最终交付.md`。
+公网演示、公开Git仓库和新版实际录屏已交付。Docker Compose提供本机持久化部署；原生Tk目录输入、启动、关闭重开与工作区恢复已验收。真实API证据位于本机 demo_evidence/live/。详见 `docs/最终交付.md`。
