@@ -1,0 +1,54 @@
+{
+  "steps": [
+    {
+      "seconds": 0,
+      "title": "1. 多学科产品首页，进入体验"
+    },
+    {
+      "seconds": 3,
+      "title": "2. 语文jqx：示范、分层活动、材料填写检查，读音书写由老师判断"
+    },
+    {
+      "seconds": 6,
+      "title": "3. 语文参考答案与教师观察点，可以直接修改文字"
+    },
+    {
+      "seconds": 9,
+      "title": "4. 数学乘法：题意、答案、评分点和可核对算式"
+    },
+    {
+      "seconds": 12,
+      "title": "5. 故意把4乘3的期望写成13，程序算出12并标出失败"
+    },
+    {
+      "seconds": 14,
+      "title": "6. 存在计算错误时，教案下载被阻止"
+    },
+    {
+      "seconds": 19,
+      "title": "7. 信息科技循环课：Python示例真实运行，查看输入输出"
+    },
+    {
+      "seconds": 24,
+      "title": "8. 故意写死循环，实际执行超限"
+    },
+    {
+      "seconds": 27,
+      "title": "9. 代码错误时，同样禁止导出"
+    },
+    {
+      "seconds": 33,
+      "title": "10. 老师确认6项材料，保存前查看文件修改"
+    },
+    {
+      "seconds": 41,
+      "title": "11. 教案真实写入本机目录，并下载完整教案包"
+    }
+  ],
+  "durationSeconds": 43,
+  "language": "completeness only",
+  "mathFailureBlocked": true,
+  "loopFailureBlocked": true,
+  "localFiles": true,
+  "source": "explicit offline samples"
+}

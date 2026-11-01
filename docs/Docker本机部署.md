@@ -5,7 +5,7 @@
 1. 下载并解压项目源码，打开 Docker Desktop。这里需要使用Linux容器模式，通常是默认设置。
 2. 如果要用真实模型，把项目里的 `.env.example` 复制成 `.env`，填写自己的密钥。只想试试流程，可以先不填。
 3. 双击 `start-docker.cmd`，等它显示启动成功。第一次要下载镜像，可能较慢。
-4. 打开 [本机页面](http://127.0.0.1:8765)，点击“体验产品能力”。用Docker启动后，不需要再装Python。
+4. 打开 [本机页面](http://127.0.0.1:8765)，点击“体验产品能力”，在工作台选择语文、数学或信息科技。用Docker启动后，不需要再装Python。
 
 喜欢用命令行的话，在解压后的项目目录执行：
 
@@ -56,3 +56,5 @@ docker compose up -d --force-recreate --wait
 检查记录在本机 `deliverables/docker-acceptance.json`。开发者可以运行 `python scripts/test-docker.py --live` 重做，会调用付费API；重启后可运行 `python scripts/test-docker.py --resume` 检查恢复。
 
 桌面启动器的使用与检查另见 [桌面测试记录](桌面验收.md)。
+
+三科版已重新构建并在Docker中检查Word读取、学科切换、语文下载、数学错误拦截和编程代码运行。详见[三科版使用说明](多学科使用说明.md)。

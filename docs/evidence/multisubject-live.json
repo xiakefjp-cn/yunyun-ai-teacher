@@ -1,0 +1,29 @@
+[
+  {
+    "subject": "语文",
+    "source": "api",
+    "check_scope": "completeness",
+    "checks": 10,
+    "automatic_checks_completed": true,
+    "teacher_approved": false,
+    "minutes": 40
+  },
+  {
+    "subject": "数学",
+    "source": "api",
+    "check_scope": "arithmetic",
+    "checks": 10,
+    "automatic_checks_completed": true,
+    "teacher_approved": false,
+    "minutes": 40
+  },
+  {
+    "subject": "信息科技",
+    "source": "api",
+    "check_scope": "code",
+    "checks": 16,
+    "automatic_checks_completed": true,
+    "teacher_approved": false,
+    "minutes": 40
+  }
+]

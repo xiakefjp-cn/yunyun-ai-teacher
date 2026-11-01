@@ -5,6 +5,7 @@ from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse
 from .core import Engine
+from .reference import import_reference
 
 WEB=Path(__file__).resolve().parent.parent/'web'/'studio.html'
 LANDING=WEB.with_name('index.html')
@@ -29,9 +30,10 @@ def create_server(root, host='127.0.0.1', port=8765, mode='web'):
             if self.headers.get('X-Yunyun-Token')!=token: return self.send({'error':'访问令牌无效'},403)
             try:
                 size=int(self.headers.get('Content-Length','0'))
-                if size>200000: raise ValueError('请求过大')
+                if size<0 or size>3000000: raise ValueError('请求过大')
                 data=json.loads(self.rfile.read(size)); path=urlparse(self.path).path
-                if path=='/api/generate': result=engine.generate(**data)
+                if path=='/api/import': result=import_reference(**data)
+                elif path=='/api/generate': result=engine.generate(**data)
                 elif path=='/api/edit': result=engine.edit(**data)
                 elif path=='/api/review': result=engine.review(**data)
                 elif path=='/api/rollback': result=engine.rollback(**data)

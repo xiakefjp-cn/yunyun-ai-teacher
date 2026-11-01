@@ -16,7 +16,7 @@ html=html.replace('工作区为','工作区为').replace('预览写入差异','�
 shutil.copyfile(root/'web/index.html',out/'index.html')
 shutil.copyfile(root/'web/browser-worker.js',out/'browser-worker.js')
 (out/'app').mkdir(exist_ok=True)
-for name in ('__init__.py','core.py','runner.py'):shutil.copyfile(root/'app'/name,out/'app'/name)
+for name in ('__init__.py','core.py','runner.py','subjects.py','reference.py'):shutil.copyfile(root/'app'/name,out/'app'/name)
 seeds=[dict(path=p.name,content=p.read_text('utf-8')) for p in (root/'demo_workspace').iterdir() if p.is_file() and p.suffix in ('.md','.json','.py')]
 (out/'seeds.json').write_text(json.dumps(seeds,ensure_ascii=False),'utf-8')
 (out/'.nojekyll').touch()

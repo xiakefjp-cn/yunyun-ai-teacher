@@ -3,7 +3,7 @@ importScripts('https://cdn.jsdelivr.net/pyodide/v0.28.3/full/pyodide.js');
 const boot=(async()=>{
  const py=await loadPyodide({indexURL:'https://cdn.jsdelivr.net/pyodide/v0.28.3/full/'});
  py.FS.mkdirTree('/app');py.FS.mkdirTree('/workspace');
- for(const name of ['__init__.py','runner.py','core.py']){
+ for(const name of ['__init__.py','runner.py','subjects.py','reference.py','core.py']){
   const r=await fetch('app/'+name);if(!r.ok)throw Error('无法加载共享核心');
   py.FS.writeFile('/app/'+name,await r.text());
  }
@@ -45,12 +45,14 @@ def browser_case(code, case):
 
 runner.run_case=browser_case
 from app.core import Engine
+from app.reference import import_reference
 engine=Engine('/workspace')
 def dispatch(raw):
     payload=json.loads(raw)
     if payload.get('saved'): engine.state=payload['saved']
     route=payload['route']; data=payload.get('data') or {}
     if route=='state': result=dict(state=engine.state,files=engine.files(),mode='browser',workspace='浏览器独立工作区（只在此设备保存）')
+    elif route=='import': result=import_reference(**data)
     elif route=='generate':
         if data.get('live'): raise ValueError('公网演示不接收密钥；真实模型请使用本机版本')
         result=engine.generate(**data)
