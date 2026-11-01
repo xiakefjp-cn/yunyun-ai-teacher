@@ -10,7 +10,7 @@
 
 2. **桌面端和本机启动**：下载源码后，安装Python 3.11或更新版本（含Tk），双击 [start-desktop.cmd](start-desktop.cmd)，输入教案目录即可启动。也可先打开Docker Desktop，再双击 [start-docker.cmd](start-docker.cmd)。[详细步骤](docs/Docker本机部署.md)
 
-3. **演示视频**：[三科新版演示](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/download/v0.4.0/yunyun-multisubject.webm)，展示语文材料、数学算错拦截、代码死循环拦截、审核和本机保存。另附[真实模型编程备课84秒视频](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/download/v0.3.0/yunyun-demo.webm)。新版视频使用明确标注的离线示例。
+3. **演示视频**：[43秒三科新版演示](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/download/v0.4.0/yunyun-multisubject.webm)，展示语文材料、数学算错拦截、代码死循环拦截、审核和本机保存。另附[真实模型编程备课84秒视频](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/download/v0.4.0/yunyun-demo.webm)。新版视频使用明确标注的离线示例。
 
 4. **源码仓库**：[公开GitHub仓库](https://github.com/xiakefjp-cn/yunyun-ai-teacher)，保留完整提交历史。[给AI的要求与修改记录](docs/prompts.md) · [完整实现思路](docs/完整思路与方法.md) · [源码下载](https://github.com/xiakefjp-cn/yunyun-ai-teacher/releases/tag/v0.4.0)
 
@@ -65,12 +65,12 @@ python -m app.server --workspace demo_workspace
 ## 怎样走完一次备课
 
 1. 选择学科、学段、课题和总时长；如果有旧教案，展开“参考教案”，选择docx、txt或md文件，检查读取后的文字并去掉个人信息。填写需求，例如：“给初二备一节40分钟的循环结构课，刚学完条件语句；40人中5人未交作业，3人写了死循环。”
-2. 点生成，查看一份教案、两个代码示例、基础/进阶/挑战各一道练习，以及参考答案和评分点。
+2. 点生成，查看一份教案、两个课堂示范（信息科技为代码示例）、基础/进阶/挑战各一道练习，以及参考答案和评分点。
 3. 查看本学科的检查范围：信息科技展示代码输入输出，数学展示算式核对，语文只展示填写完整性。默认循环课有16项代码检查。
 4. 检查教案是否适合自己的学生，再逐项点“接受”。全部通过检查、6项都接受后，才能下载。
 5. 本机版还可以把文件直接保存到教案目录。系统先列出将修改的内容，老师确认后才写入；已有文件会先备份。
 
-想看系统能否发现错误：先用离线模式生成一版，再输入“故意失败”生成。系统会故意放入一个不会结束的循环。运行检查会失败，此时不能接受或下载。到历史记录恢复通过的版本后，需要重新审核。
+想看编程错误拦截：先选择信息科技，用离线模式生成一版，再输入“故意失败”生成。系统会故意放入一个不会结束的循环。运行检查会失败，此时不能接受或下载。到历史记录恢复通过的版本后，需要重新审核。
 
 ## 怎样接入真实模型
 
@@ -95,6 +95,8 @@ docker compose up -d --force-recreate --wait
 目前适合单个老师试用。多人账号、学生端还没做；也不支持随便运行任何 Python 程序。Word只读取文字，不识别图片、口型或书写。正式课堂使用前，仍需要老师检查题目、答案、讲解和难度。
 
 ## 想了解项目怎么做的
+
+不确定从哪份文档看起，可以先打开[文档目录](docs/README.md)。
 
 - [一页《设计与教育判断》](docs/设计与教育判断.md)：为什么这样设计，哪些事交给程序，哪些事需要老师判断。
 - [完整思路与方法](docs/完整思路与方法.md)：从读题到实现的步骤。
