@@ -11,8 +11,8 @@ const {chromium}=require(process.env.YUNYUN_PLAYWRIGHT||'C:/Users/Fan jun pu/.ca
  async function step(title){steps.push({seconds:Math.round((Date.now()-start)/1000),title});console.log(title);fs.mkdirSync('deliverables/final-video-steps',{recursive:true});await page.screenshot({path:`deliverables/final-video-steps/step-${steps.length}.png`});await page.waitForTimeout(2400)}
  await page.goto(process.env.YUNYUN_DEMO_URL||'http://127.0.0.1:8879');
  await step('1. 多学科产品首页，进入体验');
- await page.getByRole('link',{name:'体验产品能力',exact:false}).first().click();await ready();
- await page.selectOption('#subject','语文');await page.locator('#generate').click();await ready();
+ await page.getByRole('link',{name:'体验产品能力',exact:false}).first().click();await page.waitForFunction(()=>document.getElementById('workspace').textContent.length>0,null,{timeout:120000});await ready();
+ await page.selectOption('#subject','语文');await page.selectOption('#live','false');await page.locator('#generate').click();await ready();
  if(!await page.locator('#notice').innerText().then(t=>t.includes('材料填写检查完成')))throw Error('Language scope missing');
  await step('2. 语文jqx：示范、分层活动、材料填写检查，读音书写由老师判断');
  await page.locator('#items article').nth(3).scrollIntoViewIfNeeded();await step('3. 语文参考答案与教师观察点，可以直接修改文字');
@@ -25,15 +25,18 @@ const {chromium}=require(process.env.YUNYUN_PLAYWRIGHT||'C:/Users/Fan jun pu/.ca
  await page.locator('#download').click();await ready();await page.locator('#notice').scrollIntoViewIfNeeded();await step('6. 存在计算错误时，教案下载被阻止');
  await page.evaluate(()=>window.scrollTo(0,0));await page.selectOption('#subject','信息科技');
  await page.selectOption('#live','true');
- await page.locator('#request').fill('给初二备一节40分钟的循环结构课，刚学完条件语句。40人中5人未交练习、3人写了死循环、6人有边界错误。请提供完整教案、两个可运行示例、三道分层练习，重点安排变量追踪和错因提醒。');
+ await page.locator('#question-mode').selectOption('model');
+ await page.locator('#request').fill('给初二备40分钟循环结构课，刚学完条件语句。全班40人，5人未交、3人死循环、6人边界错。围绕校园排队或读书记录自行设计两个Python示例和三道分层题，附解题思路、代码与测试，不直接重复示例当作练习。只用允许的语法，不用乘法、函数或try/except。');
  await step('7. 老师提出循环课需求，选择真实模型API');
  await page.locator('#generate').click();await ready();
  if(!await page.evaluate(()=>state.current.source==='api'&&state.current.verified))throw Error('Live coding generation failed');
  const cards=page.locator('#items article');
  await cards.nth(2).locator('details').evaluateAll(ds=>ds.forEach(d=>d.open=true));await cards.nth(2).scrollIntoViewIfNeeded();
- await step('8. 真实模型返回编程教案，Python示例和参考解实际运行通过');
+ await step('8. 真实模型根据需求出题，查看代码实际运行与解题思路');
+ await cards.nth(3).scrollIntoViewIfNeeded();await step('查看逐题来源：模型生成、解题思路、建议用时与参考代码');
  const good=await page.evaluate(()=>state.current.id);
- await page.locator('#code_example_while').fill('while True:\n    pass\n');
+ const whileId=await page.evaluate(()=>state.current.bundle.items[2].id);
+ await page.locator('#code_'+whileId).fill('while True:\n    pass\n');
  await cards.nth(2).getByRole('button',{name:'保存修改并重新验证',exact:true}).click();await ready();
  if(!await page.locator('#notice').innerText().then(t=>t.includes('验证失败')))throw Error('Loop escaped');
  await step('9. 故意写死循环，实际执行超限');
@@ -46,7 +49,8 @@ const {chromium}=require(process.env.YUNYUN_PLAYWRIGHT||'C:/Users/Fan jun pu/.ca
  const downloaded=page.waitForEvent('download');await page.locator('#download').click();await(await downloaded).saveAs('deliverables/multisubject-classroom.zip');await ready();
  await step('12. 教案真实写入本机目录，并下载完整教案包');
  const workspace=(await page.evaluate(async()=>await(await api('state')).json())).workspace;
- if(!fs.existsSync(path.join(workspace,'published/lesson.md')))throw Error('Published host lesson missing');
+ const hostWorkspace=workspace==='/workspace'?path.resolve('teacher_workspace'):workspace;
+ if(!fs.existsSync(path.join(hostWorkspace,'published/lesson.md')))throw Error('Published host lesson missing');
  const evidence={steps,durationSeconds:Math.round((Date.now()-start)/1000),language:'completeness only',mathFailureBlocked:true,loopFailureBlocked:true,localFiles:true,source:'language/math: explicit offline samples; computing: real model API'};
  if(evidence.durationSeconds>=300)throw Error('Submission video exceeds five minutes');
  fs.writeFileSync('deliverables/subjects-video.json',JSON.stringify(evidence,null,2));

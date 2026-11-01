@@ -7,7 +7,7 @@ import zipfile
 from unittest.mock import patch
 
 from app.core import Engine, seed_stats, template
-from app.questions import builtin_questions, empty_contract
+from app.questions import builtin_questions, empty_contract, normalize_model_text
 
 
 class Response:
@@ -18,6 +18,13 @@ class Response:
 
 
 class Questions(unittest.TestCase):
+    def test_normalize_only_text_format_not_answers(self):
+        b={'items':[{'id':'basic','answer':['答案甲','答案乙'],'code':['不能自动转换代码']}]}
+        normalize_model_text(b)
+        self.assertEqual(b['items'][0]['answer'],'答案甲\n答案乙')
+        self.assertIsInstance(b['items'][0]['code'],list)
+        self.assertIn('未修改内容',b['format_adjustments'][0])
+
     def test_model_contract_has_no_worked_answers(self):
         sample=template('初中',seed_stats())
         blank=empty_contract(sample)
@@ -48,10 +55,15 @@ class Questions(unittest.TestCase):
             e.edit(item['id'],code=item['code']+'\n')
             self.assertEqual(e.state['current']['bundle']['question_sources'][item['id']]['kind'],'teacher_edited')
             for x in e.state['current']['bundle']['items']:e.review(x['id'],True)
+            self.assertTrue(all(s['teacher_reviewed'] for s in e.state['current']['bundle']['question_sources'].values()))
             archive=zipfile.ZipFile(io.BytesIO(e.archive()))
             self.assertIn('question-sources.json',archive.namelist())
             exported=archive.read('basic.md').decode()
             self.assertIn('解题思路',exported);self.assertIn('```python',exported)
+            e.edit('basic',solution='先手算，再逐行解释代码。',estimated_minutes=7,participation='选做')
+            self.assertEqual(e.state['current']['bundle']['items'][3]['estimated_minutes'],7)
+            self.assertEqual(e.state['accepted'],[])
+            self.assertTrue(all(not s['teacher_reviewed'] for s in e.state['current']['bundle']['question_sources'].values()))
 
     def test_mixed_protects_bank_and_fills_other_levels(self):
         chosen=next(r for r in builtin_questions() if r['subject']=='信息科技' and r['level']=='基础')

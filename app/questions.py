@@ -97,6 +97,20 @@ def apply_bank(bundle, selected):
     return bundle
 
 
+def normalize_model_text(bundle):
+    """Lossless formatting only: keep multiple text answers, never change meaning."""
+    if not isinstance(bundle,dict) or not isinstance(bundle.get('items'),list): return bundle
+    adjustments=[]
+    for item in bundle['items']:
+        if not isinstance(item,dict):continue
+        for key in ('content','answer','solution'):
+            value=item.get(key)
+            if isinstance(value,list) and value and len(value)<=30 and all(isinstance(v,str) for v in value):
+                item[key]='\n'.join(value);adjustments.append(str(item.get('id'))+'.'+key+'由文字数组转为分行文字，未修改内容')
+    if adjustments:bundle['format_adjustments']=adjustments
+    return bundle
+
+
 def require_answers(bundle):
     for item in bundle['items']:
         if item['kind']!='exercise':continue
