@@ -6,12 +6,27 @@ import unittest
 import zipfile
 from pathlib import Path
 
-from app.core import Engine, validate_bundle
+from app.core import Engine, validate_bundle, validate_stats
 from app.reference import import_reference
 from app.subjects import arithmetic_case, general_stats, material_template
 
 
 class Subjects(unittest.TestCase):
+    def test_only_provided_class_counts_are_used(self):
+        stats=dict(total=None,missing=5,infinite_loop=3,boundary=None)
+        validate_stats(stats)
+        with tempfile.TemporaryDirectory() as directory:
+            engine=Engine(directory)
+            rev=engine.generate('现场只提供5人未交和3人死循环','初中',stats)['current']
+            self.assertTrue(rev['verified'])
+            self.assertEqual(rev['bundle']['stats'],stats)
+            for warning in rev['bundle']['warnings']:
+                self.assertIn('边界错误未提供',warning['evidence'])
+                self.assertIn('总人数未提供',warning['evidence'])
+                self.assertNotIn('6人',warning['evidence'])
+            self.assertEqual(engine.state['accepted'],[])
+        with self.assertRaises(ValueError): validate_stats(dict(total=4,missing=5,infinite_loop=3,boundary=None))
+
     def test_language_review_and_archive(self):
         with tempfile.TemporaryDirectory() as directory:
             engine = Engine(directory)

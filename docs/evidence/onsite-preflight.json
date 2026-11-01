@@ -1,0 +1,14 @@
+{
+  "source": "api",
+  "verified": true,
+  "stats": {
+    "total": null,
+    "missing": 5,
+    "infinite_loop": 3,
+    "boundary": null
+  },
+  "cases": 15,
+  "attempts": 1,
+  "minutes": 40,
+  "teacherApproved": false
+}

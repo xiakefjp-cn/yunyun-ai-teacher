@@ -7,6 +7,10 @@ SUBJECTS = ('信息科技', '语文', '数学')
 STAGES = ('小学', '初中', '大学')
 
 
+def stat_text(value):
+    return '未提供' if value is None else str(value)+'人'
+
+
 def general_stats():
     return dict(total=40, missing=5, needs_support=3, confusion=6)
 
@@ -138,6 +142,6 @@ def material_template(subject, stage, stats, topic='', minutes=40):
         if subject=='数学': x['calculations']=[dict(expression=a,expected=b) for a,b in data[4]]
         items.append(x)
     warnings=[dict(category=warning[0],evidence='教学中可能出现的问题，尚无本班实测结论',trigger=warning[1],intervention=warning[2]),
-              dict(category='需要辅导',evidence=f"老师填写需辅导{stats['needs_support']}人、易混淆{stats['confusion']}人",trigger='全班齐答可能掩盖个体困难',intervention='抽查几位学生，让他们指认、解释或演示，再安排同伴帮助'),
-              dict(category='缺少作业信息',evidence=f"{stats['missing']}人未交练习，原因待了解",trigger='未交不等于不会',intervention='先做简短课堂检查，了解后再补练')]
+              dict(category='需要辅导',evidence=f"老师填写需辅导：{stat_text(stats['needs_support'])}，易混淆：{stat_text(stats['confusion'])}",trigger='全班齐答可能掩盖个体困难',intervention='抽查几位学生，让他们指认、解释或演示，再安排同伴帮助'),
+              dict(category='缺少作业信息',evidence=f"未交练习：{stat_text(stats['missing'])}，原因待了解",trigger='未交不等于不会',intervention='先做简短课堂检查，了解后再补练')]
     return dict(title=title+'备课包',subject=subject,stage=stage,topic=title,minutes=minutes,stats=stats,items=items,warnings=warnings)
