@@ -1,0 +1,628 @@
+{
+  "version": 1,
+  "questions": [
+    {
+      "id": "builtin-1-basic",
+      "subject": "信息科技",
+      "stages": [
+        "小学",
+        "初中",
+        "大学"
+      ],
+      "topic": "循环结构",
+      "tags": [
+        "循环",
+        "for",
+        "while"
+      ],
+      "level": "基础",
+      "item": {
+        "id": "basic",
+        "title": "基础：输出1至n的偶数",
+        "kind": "exercise",
+        "code": "n = int(input())\nfor i in range(2, n + 1, 2):\n    print(i)\n",
+        "tests": [
+          {
+            "stdin": "1",
+            "expected": ""
+          },
+          {
+            "stdin": "2",
+            "expected": "2"
+          },
+          {
+            "stdin": "6",
+            "expected": "2\n4\n6"
+          }
+        ],
+        "level": "基础",
+        "prompt": "输入非负整数 n（0~100），按行输出1至n的偶数。",
+        "rubric": [
+          "正确区间4分",
+          "偶数判断或步长4分",
+          "边界与输出2分"
+        ],
+        "estimated_minutes": 4,
+        "participation": "必做",
+        "solution": "用range从2开始、步长为2，逐个输出不超过n的偶数。n小于2时不输出。"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-1-advanced",
+      "subject": "信息科技",
+      "stages": [
+        "小学",
+        "初中",
+        "大学"
+      ],
+      "topic": "循环结构",
+      "tags": [
+        "循环",
+        "for",
+        "while"
+      ],
+      "level": "进阶",
+      "item": {
+        "id": "advanced",
+        "title": "进阶：累加到指定上限",
+        "kind": "exercise",
+        "code": "n = int(input())\ns = 0\ni = 1\nwhile i <= n:\n    s += i\n    i += 1\nprint(s)\n",
+        "tests": [
+          {
+            "stdin": "0",
+            "expected": "0"
+          },
+          {
+            "stdin": "1",
+            "expected": "1"
+          },
+          {
+            "stdin": "10",
+            "expected": "55"
+          }
+        ],
+        "level": "进阶",
+        "prompt": "输入 n（0~100），使用 while 输出1至n之和。",
+        "rubric": [
+          "初始化2分",
+          "终止与更新4分",
+          "累加2分",
+          "边界2分"
+        ],
+        "estimated_minutes": 6,
+        "participation": "必做",
+        "solution": "把和设为0、计数设为1；在i不大于n时先累加再更新i。n为0时循环不执行，输出0。"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-1-challenge",
+      "subject": "信息科技",
+      "stages": [
+        "小学",
+        "初中",
+        "大学"
+      ],
+      "topic": "循环结构",
+      "tags": [
+        "循环",
+        "for",
+        "while"
+      ],
+      "level": "挑战",
+      "item": {
+        "id": "challenge",
+        "title": "挑战：第一次达到目标",
+        "kind": "exercise",
+        "code": "target = int(input())\ns = 0\ni = 0\nwhile s < target:\n    i += 1\n    s += i\nprint(i)\n",
+        "tests": [
+          {
+            "stdin": "0",
+            "expected": "0"
+          },
+          {
+            "stdin": "1",
+            "expected": "1"
+          },
+          {
+            "stdin": "7",
+            "expected": "4"
+          },
+          {
+            "stdin": "10",
+            "expected": "4"
+          }
+        ],
+        "level": "挑战",
+        "prompt": "输入目标（0~100），求使1+…+k至少达到目标的最小非负整数k。先写变量表再编码。",
+        "rubric": [
+          "循环条件3分",
+          "更新顺序3分",
+          "最小性解释2分",
+          "零边界2分"
+        ],
+        "estimated_minutes": 8,
+        "participation": "选做",
+        "solution": "从和为0、次数为0开始，每轮先把次数加1，再把该次数加入总和；达到目标就停止。目标0直接输出0。"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-2-basic",
+      "subject": "语文",
+      "stages": [
+        "小学"
+      ],
+      "topic": "汉语拼音 j q x",
+      "tags": [
+        "jqx",
+        "j q x",
+        "拼音"
+      ],
+      "level": "基础",
+      "item": {
+        "id": "basic",
+        "kind": "exercise",
+        "level": "基础",
+        "title": "指认和辨形",
+        "prompt": "在j、q、x、p四张卡中找出今天学的三个声母，说说q和p哪里不同。",
+        "answer": "今天学习j、q、x。比较q和p时要指出竖线与圆圈的相对位置，老师用标准字形示范。",
+        "rubric": [
+          "指认正确",
+          "能比较字形"
+        ],
+        "checks": [
+          "教师核对内容与本课目标一致",
+          "观察学生能否解释，不能只看抄出的答案"
+        ],
+        "estimated_minutes": 4,
+        "participation": "必做"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-2-advanced",
+      "subject": "语文",
+      "stages": [
+        "小学"
+      ],
+      "topic": "汉语拼音 j q x",
+      "tags": [
+        "jqx",
+        "j q x",
+        "拼音"
+      ],
+      "level": "进阶",
+      "item": {
+        "id": "advanced",
+        "kind": "exercise",
+        "level": "进阶",
+        "title": "两拼和三拼",
+        "prompt": "用卡牌拼读jī与xiā，说说第二个音节比第一个多了哪张卡。",
+        "answer": "jī练习两拼，xiā练习三拼；xiā中有介母i。读音是否准确由老师听辨。",
+        "rubric": [
+          "能操作卡牌",
+          "能区分两拼三拼",
+          "读音由老师确认"
+        ],
+        "checks": [
+          "教师核对内容与本课目标一致",
+          "观察学生能否解释，不能只看抄出的答案"
+        ],
+        "estimated_minutes": 6,
+        "participation": "必做"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-2-challenge",
+      "subject": "语文",
+      "stages": [
+        "小学"
+      ],
+      "topic": "汉语拼音 j q x",
+      "tags": [
+        "jqx",
+        "j q x",
+        "拼音"
+      ],
+      "level": "挑战",
+      "item": {
+        "id": "challenge",
+        "kind": "exercise",
+        "level": "挑战",
+        "title": "卡牌迁移与解释",
+        "prompt": "分别用j、q、x与ī卡相碰，拼读jī、qī、xī；说说换了哪张卡，哪些没有变。",
+        "answer": "声母卡依次换成j、q、x，带调韵母ī卡不变。学生演示并解释，读音由老师听辨。",
+        "rubric": [
+          "能准确换卡",
+          "能说清声母变而韵母不变",
+          "老师逐个听辨"
+        ],
+        "checks": [
+          "教师核对内容与本课目标一致",
+          "观察学生能否解释，不能只看抄出的答案"
+        ],
+        "estimated_minutes": 8,
+        "participation": "选做"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-3-basic",
+      "subject": "语文",
+      "stages": [
+        "小学",
+        "初中"
+      ],
+      "topic": "习作 漫画老师",
+      "tags": [
+        "漫画",
+        "习作",
+        "写作",
+        "作文"
+      ],
+      "level": "基础",
+      "item": {
+        "id": "basic",
+        "kind": "exercise",
+        "level": "基础",
+        "title": "圈出特点",
+        "prompt": "写出想描写的老师的一个特点，再列一件能表现它的小事。",
+        "answer": "答案开放。特点与事例应对应，例如“有耐心”对应反复换方法解释问题。",
+        "rubric": [
+          "特点明确",
+          "事例具体",
+          "不编造为亲身经历"
+        ],
+        "checks": [
+          "教师核对内容与本课目标一致",
+          "观察学生能否解释，不能只看抄出的答案"
+        ],
+        "estimated_minutes": 4,
+        "participation": "必做"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-3-advanced",
+      "subject": "语文",
+      "stages": [
+        "小学",
+        "初中"
+      ],
+      "topic": "习作 漫画老师",
+      "tags": [
+        "漫画",
+        "习作",
+        "写作",
+        "作文"
+      ],
+      "level": "进阶",
+      "item": {
+        "id": "advanced",
+        "kind": "exercise",
+        "level": "进阶",
+        "title": "把事情写具体",
+        "prompt": "从提纲中选一件事，写出一个动作和一句话，请同伴指出哪里能看出特点。",
+        "answer": "答案开放。参考标准：细节服务人物特点，事件经过让读者看得懂。",
+        "rubric": [
+          "动作或语言具体",
+          "能表现特点",
+          "表达清楚"
+        ],
+        "checks": [
+          "教师核对内容与本课目标一致",
+          "观察学生能否解释，不能只看抄出的答案"
+        ],
+        "estimated_minutes": 6,
+        "participation": "必做"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-3-challenge",
+      "subject": "语文",
+      "stages": [
+        "小学",
+        "初中"
+      ],
+      "topic": "习作 漫画老师",
+      "tags": [
+        "漫画",
+        "习作",
+        "写作",
+        "作文"
+      ],
+      "level": "挑战",
+      "item": {
+        "id": "challenge",
+        "kind": "exercise",
+        "level": "挑战",
+        "title": "修改并解释",
+        "prompt": "根据同伴的一条意见修改原段，标出改动，并说清为什么改。",
+        "answer": "答案开放。能比较改前改后的具体变化，并解释它如何帮助突出特点。",
+        "rubric": [
+          "有实际修改",
+          "理由与文本对应",
+          "尊重人物"
+        ],
+        "checks": [
+          "教师核对内容与本课目标一致",
+          "观察学生能否解释，不能只看抄出的答案"
+        ],
+        "estimated_minutes": 8,
+        "participation": "选做"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-4-basic",
+      "subject": "数学",
+      "stages": [
+        "小学"
+      ],
+      "topic": "乘法的初步认识",
+      "tags": [
+        "乘法",
+        "几个几"
+      ],
+      "level": "基础",
+      "item": {
+        "id": "basic",
+        "kind": "exercise",
+        "level": "基础",
+        "title": "把加法改写成乘法",
+        "prompt": "把3+3+3+3改写成乘法，算出结果，并说出有几个3。",
+        "answer": "4个3，4×3=12。",
+        "rubric": [
+          "能找相同加数",
+          "能解释组数和每组数量"
+        ],
+        "checks": [
+          "教师核对内容与本课目标一致",
+          "观察学生能否解释，不能只看抄出的答案"
+        ],
+        "calculations": [
+          {
+            "expression": "3+3+3+3",
+            "expected": "12"
+          },
+          {
+            "expression": "4*3",
+            "expected": "12"
+          }
+        ],
+        "estimated_minutes": 4,
+        "participation": "必做"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-4-advanced",
+      "subject": "数学",
+      "stages": [
+        "小学"
+      ],
+      "topic": "乘法的初步认识",
+      "tags": [
+        "乘法",
+        "几个几"
+      ],
+      "level": "进阶",
+      "item": {
+        "id": "advanced",
+        "kind": "exercise",
+        "level": "进阶",
+        "title": "用图解释",
+        "prompt": "每盘5个苹果，3盘共多少个？先画图再列式。",
+        "answer": "5+5+5=15，3×5=15（个）。图应表示3组、每组5个。",
+        "rubric": [
+          "图与数量对应",
+          "算式和单位正确"
+        ],
+        "checks": [
+          "教师核对内容与本课目标一致",
+          "观察学生能否解释，不能只看抄出的答案"
+        ],
+        "calculations": [
+          {
+            "expression": "5+5+5",
+            "expected": "15"
+          },
+          {
+            "expression": "3*5",
+            "expected": "15"
+          }
+        ],
+        "estimated_minutes": 6,
+        "participation": "必做"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-4-challenge",
+      "subject": "数学",
+      "stages": [
+        "小学"
+      ],
+      "topic": "乘法的初步认识",
+      "tags": [
+        "乘法",
+        "几个几"
+      ],
+      "level": "挑战",
+      "item": {
+        "id": "challenge",
+        "kind": "exercise",
+        "level": "挑战",
+        "title": "判断能否直接用乘法",
+        "prompt": "3个盒子分别有4、4、5支笔，能直接用3×4算总数吗？请解释并修改。",
+        "answer": "不能把不同数量当成3个4。可算4+4+5=13，或3×4+1=13。",
+        "rubric": [
+          "识别不同加数",
+          "能解释修正"
+        ],
+        "checks": [
+          "教师核对内容与本课目标一致",
+          "观察学生能否解释，不能只看抄出的答案"
+        ],
+        "calculations": [
+          {
+            "expression": "4+4+5",
+            "expected": "13"
+          },
+          {
+            "expression": "3*4+1",
+            "expected": "13"
+          }
+        ],
+        "estimated_minutes": 8,
+        "participation": "选做"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-5-basic",
+      "subject": "数学",
+      "stages": [
+        "初中"
+      ],
+      "topic": "一元一次方程",
+      "tags": [
+        "方程",
+        "一元一次"
+      ],
+      "level": "基础",
+      "item": {
+        "id": "basic",
+        "kind": "exercise",
+        "level": "基础",
+        "title": "一步方程",
+        "prompt": "解x+7=12，并代回检验。",
+        "answer": "x=5，检验5+7=12。",
+        "rubric": [
+          "两边同时减7",
+          "代回检验"
+        ],
+        "checks": [
+          "教师核对内容与本课目标一致",
+          "观察学生能否解释，不能只看抄出的答案"
+        ],
+        "calculations": [
+          {
+            "expression": "12-7",
+            "expected": "5"
+          },
+          {
+            "expression": "5+7",
+            "expected": "12"
+          }
+        ],
+        "estimated_minutes": 4,
+        "participation": "必做"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-5-advanced",
+      "subject": "数学",
+      "stages": [
+        "初中"
+      ],
+      "topic": "一元一次方程",
+      "tags": [
+        "方程",
+        "一元一次"
+      ],
+      "level": "进阶",
+      "item": {
+        "id": "advanced",
+        "kind": "exercise",
+        "level": "进阶",
+        "title": "两步方程",
+        "prompt": "解3x-2=10，写出两步运算。",
+        "answer": "两边加2得3x=12，再除以3得x=4，代回3×4-2=10。",
+        "rubric": [
+          "运算对等",
+          "结果与检验正确"
+        ],
+        "checks": [
+          "教师核对内容与本课目标一致",
+          "观察学生能否解释，不能只看抄出的答案"
+        ],
+        "calculations": [
+          {
+            "expression": "(10+2)/3",
+            "expected": "4"
+          },
+          {
+            "expression": "3*4-2",
+            "expected": "10"
+          }
+        ],
+        "estimated_minutes": 6,
+        "participation": "必做"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    },
+    {
+      "id": "builtin-5-challenge",
+      "subject": "数学",
+      "stages": [
+        "初中"
+      ],
+      "topic": "一元一次方程",
+      "tags": [
+        "方程",
+        "一元一次"
+      ],
+      "level": "挑战",
+      "item": {
+        "id": "challenge",
+        "kind": "exercise",
+        "level": "挑战",
+        "title": "纠正错误过程",
+        "prompt": "有人解2x+4=10，直接写x=10-4=6。指出漏了什么并修正。",
+        "answer": "漏掉两边除以2，x=(10-4)/2=3，代回2×3+4=10。",
+        "rubric": [
+          "指出漏步",
+          "解释等式两边相同运算"
+        ],
+        "checks": [
+          "教师核对内容与本课目标一致",
+          "观察学生能否解释，不能只看抄出的答案"
+        ],
+        "calculations": [
+          {
+            "expression": "(10-4)/2",
+            "expected": "3"
+          },
+          {
+            "expression": "2*3+4",
+            "expected": "10"
+          }
+        ],
+        "estimated_minutes": 8,
+        "participation": "选做"
+      },
+      "source_label": "项目内自编示例（AI辅助编写，待教师审校）",
+      "catalog": "built_in"
+    }
+  ]
+}

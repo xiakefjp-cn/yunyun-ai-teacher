@@ -32,7 +32,9 @@ def create_server(root, host='127.0.0.1', port=8765, mode='web'):
                 size=int(self.headers.get('Content-Length','0'))
                 if size<0 or size>3000000: raise ValueError('请求过大')
                 data=json.loads(self.rfile.read(size)); path=urlparse(self.path).path
-                if path=='/api/import': result=import_reference(**data)
+                if path=='/api/question-bank': result=engine.questions(**data)
+                elif path=='/api/question-bank/import': result=engine.import_questions(**data)
+                elif path=='/api/import': result=import_reference(**data)
                 elif path=='/api/generate': result=engine.generate(**data)
                 elif path=='/api/edit': result=engine.edit(**data)
                 elif path=='/api/review': result=engine.review(**data)

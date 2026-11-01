@@ -2,6 +2,7 @@
 !Dockerfile
 !app/
 !app/*.py
+!app/question_bank.json
 !web/
 !web/*.html
 !demo_workspace/
