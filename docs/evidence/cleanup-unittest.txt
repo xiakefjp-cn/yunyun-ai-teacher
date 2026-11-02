@@ -1,0 +1,20 @@
+test_adaptation (test_flow.Flow.test_adaptation) ... ok
+test_end_to_end (test_flow.Flow.test_end_to_end) ... ok
+test_guard (test_flow.Flow.test_guard) ... ok
+test_http (test_flow.Flow.test_http) ... ok
+test_bank_preserved_and_edited_provenance_exported (test_questions.Questions.test_bank_preserved_and_edited_provenance_exported) ... ok
+test_import_selection_and_persistence (test_questions.Questions.test_import_selection_and_persistence) ... ok
+test_mixed_protects_bank_and_fills_other_levels (test_questions.Questions.test_mixed_protects_bank_and_fills_other_levels) ... ok
+test_model_contract_has_no_worked_answers (test_questions.Questions.test_model_contract_has_no_worked_answers) ... ok
+test_normalize_only_text_format_not_answers (test_questions.Questions.test_normalize_only_text_format_not_answers) ... ok
+test_bounded_exact_arithmetic (test_subjects.Subjects.test_bounded_exact_arithmetic) ... ok
+test_language_review_and_archive (test_subjects.Subjects.test_language_review_and_archive) ... ok
+test_math_failure_gate_and_recovery (test_subjects.Subjects.test_math_failure_gate_and_recovery) ... ok
+test_only_provided_class_counts_are_used (test_subjects.Subjects.test_only_provided_class_counts_are_used) ... ok
+test_templates_and_duration (test_subjects.Subjects.test_templates_and_duration) ... ok
+test_word_import_and_privacy_line (test_subjects.Subjects.test_word_import_and_privacy_line) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 27.463s
+
+OK

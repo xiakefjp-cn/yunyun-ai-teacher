@@ -1,0 +1,11 @@
+{
+  "source": "api",
+  "verified": true,
+  "cases": 16,
+  "failure_gate": true,
+  "host_files": true,
+  "zip_bytes": 6951,
+  "revision": "d3f3595dc9254cdeaacd1c6564386821",
+  "restart_persistence": true,
+  "record_scope": "历史版本验收结果，非本次重新执行；当前版本另见 question-modes-* 记录。"
+}

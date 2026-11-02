@@ -1,0 +1,70 @@
+{
+  "steps": [
+    {
+      "seconds": 0,
+      "title": "0. 作品集首页：介绍产品能力、验证流程与使用边界"
+    },
+    {
+      "seconds": 3,
+      "title": "1. 教师提出需求，选择真实 qwen-plus API，工作区为本机真实目录"
+    },
+    {
+      "seconds": 42,
+      "title": "2. 真实API返回；全部示例和参考解已真实执行"
+    },
+    {
+      "seconds": 45,
+      "title": "3. 班情驱动的错因预警：证据、触发原因和干预"
+    },
+    {
+      "seconds": 47,
+      "title": "4. 结构化教案和40分钟课堂安排"
+    },
+    {
+      "seconds": 50,
+      "title": "5. 课堂示例代码及输入、期望、真实输出"
+    },
+    {
+      "seconds": 53,
+      "title": "6. 分层挑战题、参考答案、评分点与边界用例"
+    },
+    {
+      "seconds": 59,
+      "title": "7. 故意删去变量更新：真实执行超限，定位失败用例"
+    },
+    {
+      "seconds": 62,
+      "title": "8. 失败时下载被系统阻止"
+    },
+    {
+      "seconds": 64,
+      "title": "9. 恢复验证通过的修订，审核状态清空"
+    },
+    {
+      "seconds": 70,
+      "title": "10. 正式写入前展示完整 diff，由教师确认"
+    },
+    {
+      "seconds": 76,
+      "title": "11. 教案包已真实写入本机 published 目录"
+    },
+    {
+      "seconds": 81,
+      "title": "12. 刷新恢复会话、审核状态和历史；可下载教案包"
+    }
+  ],
+  "mode": "desktop",
+  "verified": true,
+  "accepted": [
+    "lesson",
+    "example_for",
+    "example_while",
+    "basic",
+    "advanced",
+    "challenge"
+  ],
+  "revisionCount": 2,
+  "pages": 6,
+  "durationSeconds": 84,
+  "record_scope": "历史版本验收结果，非本次重新执行；当前版本另见 question-modes-* 记录。"
+}
